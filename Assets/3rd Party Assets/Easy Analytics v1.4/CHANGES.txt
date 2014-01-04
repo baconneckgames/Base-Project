@@ -1,0 +1,18 @@
+v1.4
+- Google Analytics SDK for Android V3 compatibility
+- New method to get the user Id (Android, iOS, WebPlayer)
+
+v1.3
+- dispatch period : public void setDispatchPeriod(int seconds)
+- manual dispatch : public void dispatch()
+- Unity3D 4.x compatibility
+- Auto include frameworks in XCode on OSX
+
+v1.2
+- Bug fixes
+- Campaign management : new method public void setCampaignUrl(string campaignUrl)
+- Referrer management : new method public void setReferrer(string url)
+- Support of webplayer throught analytics.js
+
+v1.0
+- First release

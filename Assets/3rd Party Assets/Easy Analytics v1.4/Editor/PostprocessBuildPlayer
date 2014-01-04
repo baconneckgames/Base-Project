@@ -1,0 +1,21 @@
+#!/usr/bin/env python
+
+import sys, os.path
+from mod_pbxproj import XcodeProject
+
+install_path = sys.argv[1]
+target_platform = sys.argv[2]
+
+if target_platform != "iPhone": sys.exit()
+
+#modify XCode pbxproj and add framework dependencies
+pbxproj_path = os.path.join(install_path, 'Unity-iPhone.xcodeproj/project.pbxproj')
+
+project = XcodeProject.Load(pbxproj_path)
+
+project.add_file('System/Library/Frameworks/CoreData.framework', tree='SDKROOT', weak=True)
+project.add_file('usr/lib/libsqlite3.0.dylib', tree='SDKROOT')
+
+if project.modified:
+  project.backup()
+  project.saveFormat3_2() #IMPORTANT, DONT USE THE OLD VERSION!

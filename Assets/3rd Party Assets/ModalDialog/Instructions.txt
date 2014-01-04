@@ -1,0 +1,61 @@
+Simple modal dialog system for C# in Unity 4.1.2 and above
+Supports text-based modal dialogs with up to three buttons
+Modal dialogs prevent interaction with anything behind the dialog itself
+Copyright Moment Studio/Bill Borman 2013
+
+SETUP
+-	Add the modal dialog script to the scene somewhere (anywhere is fine).
+-	Add an AudioSource and assign a sound to it as well if you want button click sounds on the dialog.
+-	Add the following line to the end of the OnGUI method in your GUI script:
+		ModalDialog.Instance.ModalDialogGui();
+-	For simple OK dialogs you may only need to show a message, but for most you'll want to take some action when the user clicks.
+	If you need to take an action, your class needs to implement the IModalDialogUser interface, with the following three methods:
+		void ModalSelectedButton1(string id)
+		void ModalSelectedButton2(string id)
+		void ModalSelectedButton3(string id)
+
+USE
+-	Check out MainSceneGUI.cs, which has examples of all the types of modal dialog available.
+-	Call ModalDialog.Instance.Show() from your OnGUI method when you want to show a modal dialog
+	You don't need to call it every OnGUI call - just once. The dialog will hide itself when it's closed
+-	ModalDialog.Instance.ShowOK() and ModalDialog.Instance.ShowYesNoCancel() are provided as shortcuts to easily show common dialog types
+-	For dialogs with callbacks, check the id string in ModalSelectedButton to take appropriate action if you have multiple dialogs that could be up
+-	You may optionally show a "Don't ask me again" type check box. To set this up:
+		Declare a ModalBool object in your script, e.g. ModalDialog.ModalBool showDialog;
+		Instantiate it before you use it (e.g. in your Awake() method), e.g. showDialog = new ModalDialog.ModalBool(true);
+		Pass it in to the modal dialog call, e.g.: ModalDialog.Instance.ShowYesNoCancel("Dialog text", ref showDialog, this, "id_yesnocancel");
+		The Value of whether to show it or now will be updated and the dialog will show or not as appropriate automatically
+		If you want to set it to show or not manually, just set your ModalBool.Value property, e.g. showDialog.Value = true;
+-	To have a sound play on click, attach your AudioSource to the same game object as the modal dialog,
+	and set a sound. On the properties of the sound itself, untick "3D Sound"
+
+STYLES
+This package comes with two complete styles for the modal dialog.
+In the example scene, deactivate Modal Dialog and active Modal Dialog Alternate Look to see the second look that comes with the package.
+You can set your own styles for the dialogs as well by changing the GUI Styles on the script in the inspector.
+If you want to make another modal dialog in a different scene, you may want to copy-paste the whole component (right-click on it->copy component, then paste onto another Modal Dialog script) or create a prefab from it, so you don't have to set all the styles again.
+
+MODAL DIALOG COMPONENT
+What each part of the script does:
+Width: Width of the dialog. Height is automatically based on the amount of content
+Margin: Spacing to the content from the edge, and under the main text when not using the "Don't show again" checkbox
+Spacing: All other spacing between internal content
+Button height: Height of the buttons on the dialog
+Tint texture: Set a texture here to act as a tint for the background behind the dialog
+Background style: Style of the dialog window itself
+Text style: Style for the main dialog text
+Button style: Style for the buttons on the dialog
+Toggle button style: Style for the "Don't show this again" toggle
+Yes default text: Default text for the first button on the ShowYesNoCancel() dialog
+No default text: Default text for the second button on the ShowYesNoCancel() dialog
+Cancel default text: Default text for the last button on the ShowYesNoCancel() dialog
+OK Default text: Default text for the simple one-button ShowOK() dialog
+Don't show again text: Default text for whenever the "Don't show again" option is used
+
+NOTES
+-	Only one modal dialog can show at a time; the class is a singleton
+-	The modal dialogs can also be controlled with the keyboard arrows, enter, and escape keys
+	Escape chooses the rightmost button (usually Cancel), or "button 1" if there are no buttons showing
+-	The modal dialog could have its own OnGUI method, negating the need for calling ModalDialogGui() from another OnGUI method,
+	but each separate call to OnGUI creates extra overhead
+-	ModalDialogGui() must be called last in your OnGUI method so that it shows up on top. Gui.Depth does weird things with GUI.Window (as of Unity 4.1) so we're not using it

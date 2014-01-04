@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<inventory>
+  <iOSSKU>99</iOSSKU>
+  <androidBillingPlatform>GooglePlay</androidBillingPlatform>
+  <GooglePlayPublicKey>[Your key]</GooglePlayPublicKey>
+  <useAmazonSandbox>false</useAmazonSandbox>
+  <UseWP8MockingFramework>false</UseWP8MockingFramework>
+  <item id="com.outlinegames.100goldcoins" purchaseType="Consumable">
+    <name>100 Gold Coins</name>
+    <description>Standard issue coin, 0% gold by volume</description>
+    <platforms>
+      <GooglePlay>
+        <GooglePlay.Id>com.outlinegames.100goldcoins.v2.c</GooglePlay.Id>
+        <priceInLocalCurrency>1.99</priceInLocalCurrency>
+        <defaultLocale>en_US</defaultLocale>
+      </GooglePlay>
+      <AmazonAppstore />
+      <AppleAppStore>
+        <AppleAppStore.Id>com.outlinegames.100goldcoins.5</AppleAppStore.Id>
+        <appleAppStorePriceTier>33</appleAppStorePriceTier>
+      </AppleAppStore>
+      <MacAppStore>
+        <MacAppStore.Id>com.outlinegames.100goldcoinsosx</MacAppStore.Id>
+      </MacAppStore>
+      <WindowsPhone8 />
+    </platforms>
+  </item>
+  <item id="com.outlinegames.sword" purchaseType="NonConsumable">
+    <name>Magic Sword</name>
+    <description>Can slice through time</description>
+    <platforms>
+      <GooglePlay>
+        <GooglePlay.Id>com.outlinegames.sword.c</GooglePlay.Id>
+        <priceInLocalCurrency>0</priceInLocalCurrency>
+        <defaultLocale>en_US</defaultLocale>
+      </GooglePlay>
+      <AmazonAppstore />
+      <AppleAppStore>
+        <appleAppStorePriceTier>1</appleAppStorePriceTier>
+      </AppleAppStore>
+      <MacAppStore>
+        <MacAppStore.Id>com.outlinegames.swordosx</MacAppStore.Id>
+      </MacAppStore>
+      <WindowsPhone8 />
+    </platforms>
+  </item>
+  <item id="com.outlinegames.250goldcoins" purchaseType="Consumable">
+    <name>250 Gold coins</name>
+    <description>250 Gold coins</description>
+    <platforms>
+      <GooglePlay>
+        <priceInLocalCurrency>1</priceInLocalCurrency>
+        <defaultLocale>en_US</defaultLocale>
+      </GooglePlay>
+      <AmazonAppstore />
+      <AppleAppStore>
+        <appleAppStorePriceTier>1</appleAppStorePriceTier>
+      </AppleAppStore>
+      <MacAppStore />
+      <WindowsPhone8 />
+    </platforms>
+  </item>
+  <item id="com.outlinegames.unibill.silver.100" purchaseType="Consumable">
+    <name>100 silver</name>
+    <description>100 silver</description>
+    <platforms>
+      <GooglePlay>
+        <priceInLocalCurrency>1</priceInLocalCurrency>
+        <defaultLocale>en_US</defaultLocale>
+      </GooglePlay>
+      <AmazonAppstore />
+      <AppleAppStore>
+        <appleAppStorePriceTier>1</appleAppStorePriceTier>
+      </AppleAppStore>
+      <MacAppStore />
+      <WindowsPhone8 />
+    </platforms>
+  </item>
+  <item id="com.outlinegames.unibill.silver.500" purchaseType="Consumable">
+    <name>500 silver</name>
+    <description>500 silver</description>
+    <platforms>
+      <GooglePlay>
+        <priceInLocalCurrency>1</priceInLocalCurrency>
+        <defaultLocale>en_US</defaultLocale>
+      </GooglePlay>
+      <AmazonAppstore />
+      <AppleAppStore>
+        <appleAppStorePriceTier>1</appleAppStorePriceTier>
+      </AppleAppStore>
+      <MacAppStore />
+      <WindowsPhone8 />
+    </platforms>
+  </item>
+  <currencies>
+    <currency>
+      <currencyId>gold</currencyId>
+      <mappings>
+        <mapping>
+          <id>com.outlinegames.250goldcoins</id>
+          <amount>250</amount>
+        </mapping>
+        <mapping>
+          <id>com.outlinegames.100goldcoins</id>
+          <amount>100</amount>
+        </mapping>
+      </mappings>
+    </currency>
+    <currency>
+      <currencyId>silver</currencyId>
+      <mappings>
+        <mapping>
+          <id>com.outlinegames.unibill.silver.100</id>
+          <amount>100</amount>
+        </mapping>
+        <mapping>
+          <id>com.outlinegames.unibill.silver.500</id>
+          <amount>500</amount>
+        </mapping>
+      </mappings>
+    </currency>
+  </currencies>
+</inventory>
